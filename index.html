@@ -460,12 +460,14 @@ body, html {
     <input type="text" id="lugarPC">
   </div>
 
-  <!-- Coordenadas del PC -->
-  <div class="form-section">
-    <label>O - Coordenadas del PC</label>
-    <div class="button-group">
+    <div class="form-section">
+    <label>F - Coordenadas del PC</label>
+    <div class="input-with-button">
       <input type="text" id="coordenadasPC" readonly>
-      <button class="capture-coordinates" onclick="captureCoordinates('coordenadasPC')">Capturar coordenadas</button>
+	  <label for="coordenadasGMS">Coordenadas (GMS):</label>
+	  <input type="text" id="coordenadasGMS" readonly>
+	
+      <button onclick="captureCoordinates('coordenadasPC', 'coordenadasGMS')">Capturar</button>
     </div>
   </div>
 
@@ -1210,6 +1212,7 @@ function enviarFormularioMeteorologia() {
 
 </body>
 </html>
+
 
 
 
