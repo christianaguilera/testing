@@ -388,12 +388,15 @@ body, html {
       <option value="Bosque Nativo">Bosque Nativo</option>
       <option value="Pastizal">Pastizal</option>
 	  <option value="Plantacion">Plantacion</option>
+		<option value="Desechos agricolas">Desechos agricolas</option>
+		<option value="Desechos bosque nativo">Desechos bosque nativo</option>
     </select>
 
     <label>J - Comportamiento General del Incendio</label>
 <div>
   <label>Velocidad de Propagación</label>
-  <select id="velocidadPropagacion">
+  <select id="velocidadPropagacion" class="incendioSelect">
+	  <option value="Nulo">Nulo</option>
     <option value="Lento">Lento</option>
     <option value="Media">Media</option>
     <option value="Media-alta">Media-Alta</option>
@@ -402,7 +405,8 @@ body, html {
   </select>
 
   <label>Intensidad del frente</label>
-  <select id="intensidadFrente">
+  <select id="intensidadFrente" class="incendioSelect">
+	  <option value="Nulo">Nulo</option>
     <option value="Baja">Baja</option>
     <option value="Media">Media</option>
     <option value="Alta">Alta</option>
@@ -410,7 +414,8 @@ body, html {
   </select>
 
   <label>Longitud de llama</label>
-  <select id="longitudLlama">
+  <select id="longitudLlama" class="incendioSelect">
+	  <option value="Nulo">Nulo</option>
     <option value="Baja">Baja</option>
     <option value="Media">Media</option>
     <option value="Alta">Alta</option>
@@ -1211,7 +1216,22 @@ if ('serviceWorker' in navigator) {
     .catch(err => console.error('❌ Error al registrar SW', err));
 }
 </script>
+	  <script>
+  // Seleccionamos todos los select del grupo
+  const selects = document.querySelectorAll('.incendioSelect');
+  const principal = document.getElementById('velocidadPropagacion');
+
+  // Cuando cambie la primera opción...
+  principal.addEventListener('change', () => {
+    if (principal.value === 'Nulo') {
+      // ...se ponen todos los demás en "Nulo"
+      selects.forEach(sel => sel.value = 'Nulo');
+    }
+  });
+</script>
+
 </body>
 </html>
+
 
 
