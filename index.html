@@ -1218,37 +1218,31 @@ if ('serviceWorker' in navigator) {
     })
     .catch(err => console.error('❌ Error al registrar SW', err));
 }
-</script>
-	  <script>
-  // Seleccionamos todos los select del grupo
-  const selects = document.querySelectorAll('.incendioSelect');
-  const principal = document.getElementById('velocidadPropagacion');
+<script>
+  // --- Sincronizar ALFA ---
+  const selectsAlfa = document.querySelectorAll('.incendioSelect');
+  const principalAlfa = selectsAlfa[0];
+  principalAlfa.addEventListener('change', () => {
+    if (principalAlfa.value === 'Nulo') {
+      selectsAlfa.forEach(sel => sel.value = 'Nulo');
+    }
+  });
 
-  // Cuando cambie la primera opción...
-  principal.addEventListener('change', () => {
-    if (principal.value === 'Nulo') {
-      // ...se ponen todos los demás en "Nulo"
-      selects.forEach(sel => sel.value = 'Nulo');
+  // --- Sincronizar BRAVO ---
+  const selectsBravo = document.querySelectorAll('.incendioSelect2');
+  const principalBravo = selectsBravo[0];
+  principalBravo.addEventListener('change', () => {
+    if (principalBravo.value === 'Nulo') {
+      selectsBravo.forEach(sel => sel.value = 'Nulo');
     }
   });
 </script>
-	<script>
-  // Seleccionamos todos los select del grupo
-  const selects = document.querySelectorAll('.incendioSelect2');
-  const principal = document.getElementById('velocidadPropagacion');
 
-  // Cuando cambie la primera opción...
-  principal.addEventListener('change', () => {
-    if (principal.value === 'Nulo') {
-      // ...se ponen todos los demás en "Nulo"
-      selects.forEach(sel => sel.value = 'Nulo');
-    }
-  });
-</script>
 
 
 </body>
 </html>
+
 
 
 
