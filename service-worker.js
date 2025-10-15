@@ -1,4 +1,4 @@
-const CACHE_NAME = 'reportes-v1';
+const CACHE_NAME = 'reportes-v9';
 const FILES_TO_CACHE = [
   '/testing/',
   '/testing/index.html',
@@ -42,4 +42,5 @@ self.addEventListener('message', event => {
     self.skipWaiting();
   }
 });
+
 
