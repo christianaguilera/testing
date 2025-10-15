@@ -680,6 +680,7 @@ body, html {
     <label>Sector 1</label>
     <label for="comportamiento1">Comportamiento</label>
     <select id="comportamiento1">
+	  <option value="Nulo">Nulo</option>
       <option value="Lento">Lento</option>
       <option value="Media">Media</option>
       <option value="Alta">Alta</option>
@@ -693,7 +694,9 @@ body, html {
       <option value="camiones">Camiones cisterna</option>
       <option value="bomberos">Bomberos</option>
       <option value="carabineros">Carabineros</option>
+	  <option value="sin recurso">Sin recurso</option>
     </select>
+	  <button class="add-option" onclick="addOption('recursos1')">Añadir opción</button>
   </div>
 
   <!-- Sector 2 -->
@@ -1251,6 +1254,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
