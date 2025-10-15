@@ -640,31 +640,34 @@ body, html {
 
   <label>E - Comportamiento General del Incendio</label>
     <div>
-      <label>Velocidad de Propagación</label>
-      <select class="comportamiento">
-        <option value="Lento">Lento</option>
-        <option value="Media">Media</option>
-        <option value="Media-alta">Media-Alta</option>
-		<option value="Alta">Alta</option>
-		<option value="Extrema">Extrema</option>
-      </select>
+       <label>Velocidad de Propagación</label>
+  <select id="velocidadPropagacion" class="incendioSelect2">
+	  <option value="Nulo">Nulo</option>
+    <option value="Lento">Lento</option>
+    <option value="Media">Media</option>
+    <option value="Media-alta">Media-Alta</option>
+    <option value="Alta">Alta</option>
+    <option value="Extrema">Extrema</option>
+  </select>
 
-      <label>Intensidad del frente</label>
-      <select class="comportamiento">
-        <option value="Baja">Baja</option>
-        <option value="Media">Media</option>
-        <option value="Alta">Alta</option>
-		<option value="Extrema">Extrema</option>
-      </select>
+  <label>Intensidad del frente</label>
+  <select id="intensidadFrente" class="incendioSelect2">
+	  <option value="Nulo">Nulo</option>
+    <option value="Baja">Baja</option>
+    <option value="Media">Media</option>
+    <option value="Alta">Alta</option>
+    <option value="Extrema">Extrema</option>
+  </select>
 
-      <label>Longitud de llama</label>
-      <select class="comportamiento">
-        <option value="Baja">Baja</option>
-        <option value="Media">Media</option>
-        <option value="Alta">Alta</option>
-        <option value="Extrema">Extrema</option>
-      </select>
-    </div>
+  <label>Longitud de llama</label>
+  <select id="longitudLlama" class="incendioSelect2">
+	  <option value="Nulo">Nulo</option>
+    <option value="Baja">Baja</option>
+    <option value="Media">Media</option>
+    <option value="Alta">Alta</option>
+    <option value="Extrema">Extrema</option>
+  </select>
+</div>
 
 
 <!-- falta F-->
@@ -1229,9 +1232,24 @@ if ('serviceWorker' in navigator) {
     }
   });
 </script>
+	<script>
+  // Seleccionamos todos los select del grupo
+  const selects = document.querySelectorAll('.incendioSelect2');
+  const principal = document.getElementById('velocidadPropagacion');
+
+  // Cuando cambie la primera opción...
+  principal.addEventListener('change', () => {
+    if (principal.value === 'Nulo') {
+      // ...se ponen todos los demás en "Nulo"
+      selects.forEach(sel => sel.value = 'Nulo');
+    }
+  });
+</script>
+
 
 </body>
 </html>
+
 
 
 
