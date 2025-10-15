@@ -1219,29 +1219,39 @@ if ('serviceWorker' in navigator) {
     .catch(err => console.error('❌ Error al registrar SW', err));
 }
 <script>
-  // --- Sincronizar ALFA ---
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Sincronizar comportamiento del incendio ALFA ---
   const selectsAlfa = document.querySelectorAll('.incendioSelect');
-  const principalAlfa = selectsAlfa[0];
-  principalAlfa.addEventListener('change', () => {
-    if (principalAlfa.value === 'Nulo') {
-      selectsAlfa.forEach(sel => sel.value = 'Nulo');
-    }
-  });
 
-  // --- Sincronizar BRAVO ---
-  const selectsBravo = document.querySelectorAll('.incendioSelect2');
-  const principalBravo = selectsBravo[0];
-  principalBravo.addEventListener('change', () => {
-    if (principalBravo.value === 'Nulo') {
-      selectsBravo.forEach(sel => sel.value = 'Nulo');
-    }
-  });
+  if (selectsAlfa.length > 0) {
+    const principalAlfa = selectsAlfa[0]; // Velocidad de Propagación
+    principalAlfa.addEventListener('change', () => {
+      if (principalAlfa.value === 'Nulo') {
+        selectsAlfa.forEach(sel => sel.value = 'Nulo');
+      }
+    });
+  }
+});
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // --- Sincronizar comportamiento del incendio BRAVO ---
+  const selectsBravo = document.querySelectorAll('.incendioSelect2');
 
+  if (selectsBravo.length > 0) {
+    const principalBravo = selectsBravo[0]; // Velocidad de Propagación
 
-
+    principalBravo.addEventListener('change', () => {
+      if (principalBravo.value === 'Nulo') {
+        selectsBravo.forEach(sel => sel.value = 'Nulo');
+      }
+    });
+  }
+});
+</script>
 </body>
 </html>
+
 
 
 
