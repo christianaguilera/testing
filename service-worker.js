@@ -1,4 +1,4 @@
-const CACHE_NAME = 'reportes-v9';
+const CACHE_NAME = 'reportes-v10';
 const FILES_TO_CACHE = [
   '/testing/',
   '/testing/index.html',
@@ -11,8 +11,9 @@ self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(FILES_TO_CACHE))
+      .then(() => self.skipWaiting())
+      .catch(err => console.error('Error caching files during install:', err))
   );
-  self.skipWaiting();
 });
 
 self.addEventListener('activate', event => {
@@ -21,26 +22,21 @@ self.addEventListener('activate', event => {
       Promise.all(
         keys.map(key => key !== CACHE_NAME ? caches.delete(key) : null)
       )
-    )
+    ).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 self.addEventListener('fetch', event => {
   event.respondWith(
-    fetch(event.request).catch(() => {
-      return caches.match(event.request).then(resp => {
-        // fallback: si no encuentra el recurso, retorna index.html
-        return resp || caches.match('/testing/index.html');
-      });
-    })
+    fetch(event.request).catch(() =>
+      caches.match(event.request).then(resp =>
+        resp || caches.match('/testing/index.html')
+      )
+    )
   );
 });
 
 self.addEventListener('message', event => {
-  if (event.data === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
+  if (event.data === 'SKIP_WAITING') self.skipWaiting();
 });
-
 
