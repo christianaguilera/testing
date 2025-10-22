@@ -1091,9 +1091,9 @@ function enviarFormularioMeteorologia() {
 	 // Obtener comportamiento general
     //const comportamientoSelects = document.querySelectorAll('.comportamiento');
    // const comportamientoGeneral = Array.from(comportamientoSelects).map(select => select.value).join(', ');
-    const velocidadPropagacion = document.getElementById('velocidadPropagacion').value;
-    const intensidadFrente = document.getElementById('intensidadFrente').value;
-    const longitudLlama = document.getElementById('longitudLlama').value;
+    const velocidadPropagacion = document.getElementById('.incendioSelect')[0].value;
+    const intensidadFrente = document.getElementById('.incendioSelect')[1].value;
+    const longitudLlama = document.getElementById('.incendioSelect')[2].value;
     const objetivoInicial = Array.from(document.getElementById('objetivoInicial').selectedOptions).map(opt => opt.text).join(', ');
     const estrategiaInicial = Array.from(document.getElementById('estrategiaInicial').selectedOptions).map(opt => opt.text).join(', ');
     const tacticaInicial = Array.from(document.getElementById('tacticaInicial').selectedOptions).map(opt => opt.text).join(', ');
@@ -1273,6 +1273,7 @@ document.addEventListener("DOMContentLoaded", () => {
 </script>
 </body>
 </html>
+
 
 
 
